@@ -3,35 +3,40 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "yarn serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "format": "prettier --write \"src/**/*.js\" \"src/**/*.vue\"",
     "commit": "git-cz"
   },
   "dependencies": {
-    "core-js": "^3.6.4",
+    "core-js": "^3.6.5",
     "vue": "^2.6.11",
-    "vue-router": "^3.1.5",
-    "vuex": "^3.1.2"
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.2.0",
-    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.2.0",
     "@vue/cli-plugin-vuex": "~4.2.0",
     "@vue/cli-service": "~4.2.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@commitlint/cli": "^11.0.0",
     "babel-eslint": "^10.0.3",
+    "commitizen": "^4.2.2",
+    "commitlint-config-cz": "^0.13.2",
+    "cz-customizable": "^6.3.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.1.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
     "node-sass": "^4.12.0",
+    "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11",
-    "commitizen": "^4.0.3",
-    "cz-customizable": "^6.2.0",
-    "husky": "^3.1.0",
-    "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1"
+    "vue-template-compiler": "^2.6.11"
   },
   "config": {
     "commitizen": {
@@ -40,14 +45,14 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "*.{js,vue}": [
       "npm run lint",
-      "npm run format",
-      "git add"
+      "npm run format"
     ]
   }
 }
